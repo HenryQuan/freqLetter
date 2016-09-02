@@ -17,12 +17,11 @@ HenryQuan
 
 int letterToNumber(int letter);
 int numberToLetter(int letter);
-int getMax(int alphabet[ALPHABET]);
+int getMostFreq(int alphabet[ALPHABET]);
 void countMostFreqLetter(int alphabet[ALPHABET]);
 
 int main(int argc, char *argv[]) {
 	
-	printf("Please enter some texts: \n");
 	// I forgot to initialised this array to ZERO.
 	int alphabet[ALPHABET] = {0};
 	countMostFreqLetter(alphabet);
@@ -53,19 +52,23 @@ int numberToLetter(int letter) {
 	
 }
 
-int getMax(int alphabet[ALPHABET]) {
+int getMostFreq(int alphabet[ALPHABET]) {
 	
 	// Set the first element to be biggest fro comparing.
-	int max = alphabet[0];
+	int freq = alphabet[0];
+	int charcter = 0;
 	
 	int i = 1;
 	while (i < ALPHABET) {
-		if (max < alphabet[i]) {
-			max = alphabet[i];
+		if (freq < alphabet[i]) {
+			freq = alphabet[i];
+			charcter = i;
 		}
+		// >_< I forgot i++;
+		i++;
 	}
 	
-	return max;
+	return charcter;
 	
 }
 
@@ -81,9 +84,9 @@ void countMostFreqLetter(int alphabet[ALPHABET]) {
 			alphabet[number]++;
 		}
 	}
-	
-	int max = getMax(alphabet);
-	int character = numberToLetter(max);
-	printf("\n%c occurs %d times\n", character, alphabet[max]);
+	int freq = getMostFreq(alphabet);
+	int character = numberToLetter(freq);
+	printf("\n%c occurs %d times\n", character, alphabet[freq]);
+	getchar();
 	
 }
