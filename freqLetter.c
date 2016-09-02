@@ -9,6 +9,10 @@ HenryQuan
 
 #include <stdio.h>
 
+#define UPPER_START 'A'
+#define UPPER_END 'Z'
+#define LOWER_START 'a'
+#define LOWER_END 'z'
 #define ALPHABET 26
 
 int letterToNumber(int letter);
@@ -30,6 +34,13 @@ int main(int argc, char *argv[]) {
 int letterToNumber(int letter) {
 	
 	int result = 0;
+	// Since the result is UPPERCASE, convert all lowercase to uppercase.
+	if (letter >= LOWER_START && letter <= LOWER_END) {
+		letter -= LOWER_START;
+		letter += UPPER_START;
+	}
+	
+	result = letter - UPPER_START;
 	return result;
 	
 }
@@ -37,6 +48,7 @@ int letterToNumber(int letter) {
 int numberToLetter(int letter) {
 	
 	int result = 0;
+	result = letter + UPPER_START;
 	return result;
 	
 }
